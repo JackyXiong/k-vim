@@ -1,0 +1,14 @@
+# console log
+snippet con "console.log()"
+console.log(${1});
+endsnippet
+
+# print obj
+snippet pobj "for(var k in obj){console.log(k, obj[k]))"
+for (var k in ${1:object}) {
+  console.log(k, ${1}[k]);
+}
+endsnippet
+
+
+
