@@ -17,7 +17,7 @@ filetype off " required! turn off
 " inspired by spf13, 自定义需要的插件集合
 if !exists('g:bundle_groups')
     " let g:bundle_groups=['python', 'javascript', 'golang', 'php', 'ruby', 'shell', 'markdown', 'html', 'css', 'less', 'coffeescript', 'tmux', 'json', 'beta']
-    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta']
+    let g:bundle_groups=['python', 'javascript', 'golang', 'shell', 'markdown', 'html', 'css', 'tmux', 'json', 'beta']
 endif
 
 " ----------------------------------------------------------------------------
@@ -134,9 +134,10 @@ Plug 'vim-airline/vim-airline-themes'
 " rainbow_parentheses
 " 括号显示增强
 Plug 'kien/rainbow_parentheses.vim'
+" 去掉无用主题
 " 主题 solarized
 " solarized
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 " molokai
 " 主题 molokai
 Plug 'tomasr/molokai'
@@ -149,6 +150,24 @@ Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 " tagbar
 Plug 'majutsushi/tagbar'
+
+
+" 增加多文件打开时，buffer tab 插件
+" for minibufferexpl 去掉, 有需要同学的自己解开
+Plug 'fholgado/minibufexpl.vim'
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+" 解决FileExplorer窗口变小问题
+let g:miniBufExplForceSyntaxEnable = 1
+let g:miniBufExplorerMoreThanOne=2
+let g:miniBufExplCycleArround=1
+" 默认方向键左右可以切换buffer
+nnoremap <TAB> :MBEbn<CR>
+noremap <leader>bn :MBEbn<CR>
+noremap <leader>bp :MBEbp<CR>
+noremap <leader>bd :MBEbd<CR>
 
 " text object
 " 支持自定义文本对象
@@ -189,7 +208,7 @@ if count(g:bundle_groups, 'python')
     " pythonsyntax
     Plug 'hdima/python-syntax'
     Plug 'hynek/vim-python-pep8-indent'
-    Plug 'Glench/Vim-Jinja2-Syntax'
+    " Plug 'Glench/Vim-Jinja2-Syntax'
 
     " isort  https://github.com/timothycrosley/isort#readme + https://github.com/fisadev/vim-isort#installation
     " pip install isort
@@ -224,10 +243,11 @@ if count(g:bundle_groups, 'javascript')
     Plug 'othree/javascript-libraries-syntax.vim'
     let g:used_javascript_libs = 'jquery,underscore,backbone'
 
+    " 打开js 支持
     " for javascript 自动补全, 配合YCM, 需要安装全局环境的（非nvm中) node.js&npm
     " 安装完成后还需要在 bundle/tern_for_vim 下执行 npm install 安装依赖 `cd ~/.vim/bundle/tern_for_vim && npm install`
     " see https://github.com/marijnh/tern_for_vim
-    " Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+    Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 endif
 
 
@@ -263,6 +283,11 @@ endif
 if count(g:bundle_groups, 'html')
     " ###### emmet HTML complete #########
     " Plug 'mattn/emmet-vim'
+endif
+
+if count(g:bundle_groups, 'nginx')
+    " 打开nginx支持
+    Plug 'evanmiller/nginx-vim-syntax'
 endif
 
 " this is just for beta version
