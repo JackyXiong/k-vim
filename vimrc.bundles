@@ -151,6 +151,9 @@ Plug 'vim-ctrlspace/vim-ctrlspace'
 " tagbar
 Plug 'majutsushi/tagbar'
 
+" vue
+" Plug 'posva/vim-vue'
+
 
 " 增加多文件打开时，buffer tab 插件
 " for minibufferexpl 去掉, 有需要同学的自己解开
@@ -916,5 +919,14 @@ endif
     " vnoremap <silent> <leader>es :EsformatterVisual<CR>
 
 " }}}
+
+
+" react
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+let g:syntastic_javascript_checkers = ['eslint']
+Plug 'justinj/vim-react-snippets'
+Plug 'honza/vim-snippets'
+
 
 "------------------------------------------- end of configs --------------------------------------------

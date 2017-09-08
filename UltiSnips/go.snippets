@@ -64,4 +64,18 @@ ${1}
 */
 endsnippet
 
+snippet httph 
+func ${1}(w http.ResponseWriter, req *http.Request) {
+}
+endsnippet
+
+snippet iferr 
+if err != nil {
+	return ${1}, err
+}
+endsnippet
+
+snippet tyof
+fmt.Println(reflect.TypeOf(${1}))
+endsnippet
 
